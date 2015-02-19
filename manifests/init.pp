@@ -7,6 +7,8 @@ class moinmoin(
     before => File['/etc/moin'],
   }
 
+  validate_hash($wikis)
+
   file { '/etc/moin':
     ensure => directory,
     path   => $moinmoin::params::moin_dir,
