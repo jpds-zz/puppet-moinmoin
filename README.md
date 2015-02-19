@@ -6,7 +6,7 @@ This Puppet module can be used to deploy Moin Moin wikis.
 
 A single wiki may be configured on a server as such:
 
-``` 
+```puppet
   class { 'moinmoin':
     wikis => {
       # Wiki / URL regex for farmconfig.py.
@@ -27,7 +27,7 @@ This module does not configure Apache or the like, it is expected that this
 will be handled by their respective modules. An *example* for Apache may be
 found below:
 
-```
+```puppet
   class { 'apache':
     default_mods        => false,
     default_confd_files => false,
