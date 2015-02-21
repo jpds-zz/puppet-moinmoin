@@ -121,7 +121,7 @@ describe 'moinmoin::wiki', :type => :define do
     it do
       expect {
         should compile
-      }.to raise_error(Puppet::Error, /Solaris is not supported\./)
+      }.to raise_error(/Solaris is not supported./)
     end
   end
 end
