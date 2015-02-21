@@ -2,6 +2,8 @@
 
 This Puppet module can be used to deploy Moin Moin wikis.
 
+[![Build Status](https://travis-ci.org/jpds/puppet-moinmoin.svg?branch=master)](https://travis-ci.org/jpds/puppet-moinmoin)
+
 ## Example usage
 
 A single wiki may be configured on a server as such:
