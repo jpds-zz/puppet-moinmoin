@@ -52,5 +52,19 @@ describe 'moinmoin::wiki', :type => :define do
         }.to raise_error(Puppet::Error, /\"test\" is not a boolean/)
       end
     end
+
+    context 'httpd_external_auth => true' do
+      let :params do
+        super().merge({
+          :httpd_external_auth => true
+        })
+      end
+
+      it do
+        should contain_file('/etc/moin/wiki.py') \
+          .with_content(/^    from MoinMoin.auth import GivenAuth$/)
+          .with_content(/^    auth = \[GivenAuth\(autocreate=True\)\]$/)
+      end
+    end
   end
 end
