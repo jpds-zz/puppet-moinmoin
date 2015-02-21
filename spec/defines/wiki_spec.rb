@@ -5,7 +5,7 @@ describe 'moinmoin::wiki', :type => :define do
     'include moinmoin'
   end
 
-  context 'default settings on a Debian system' do
+  context 'example settings on a Debian system' do
     let(:facts) { { :osfamily => 'Debian' } }
     let(:title) { 'wiki' }
     let :params do
@@ -38,5 +38,19 @@ describe 'moinmoin::wiki', :type => :define do
     end
     it { should contain_file('/srv/wiki/data/') }
     it { should contain_file('/srv/wiki/underlay/') }
+    
+    context 'invalid httpd_external_auth setting' do
+      let :params do
+        super().merge({
+          :httpd_external_auth => 'test'
+        })
+      end
+
+      it do
+        expect {
+          should contain_file('/etc/moin/wiki.py')
+        }.to raise_error(Puppet::Error, /\"test\" is not a boolean/)
+      end
+    end
   end
 end
