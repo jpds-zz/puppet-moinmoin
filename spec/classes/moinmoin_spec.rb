@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe 'moinmoin', :type => 'class' do
-
-  context "On a Debian OS" do
+  context "on a Debian OS" do
     let :facts do
       {
         :osfamily => 'Debian'

@@ -6,6 +6,11 @@ class moinmoin::params {
       $moin_dir = '/etc/moin'
     }
 
+    'RedHat': {
+      $package  = 'moin'
+      $moin_dir = '/etc/moin'
+    }
+
     default: {
       fail("${::osfamily} is not supported.")
     }
