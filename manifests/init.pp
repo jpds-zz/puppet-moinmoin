@@ -1,6 +1,6 @@
 class moinmoin(
   $package_name = $moinmoin::params::package,
-  $wikis = undef,
+  $wikis = {},
 ) inherits moinmoin::params {
   package { $package_name:
     ensure => installed,
