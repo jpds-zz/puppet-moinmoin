@@ -1,13 +1,15 @@
 define moinmoin::wiki(
-   $sitename,
-   $interwikiname,
-   $data_dir,
-   $data_underlay_dir,
-   $httpd_external_auth = false,
+  $sitename,
+  $interwikiname,
+  $data_dir,
+  $data_underlay_dir,
+  $httpd_external_auth = false,
 ) {
-  # The base class must be included first because it is used by parameter defaults
+  # The base class must be included first because it is used by parameter
+  # defaults.
   if ! defined(Class['moinmoin']) {
-    fail('You must include the moinmoin base class before using any moinmoin defined resources')
+    fail('You must include the moinmoin base class before using any '
+      'moinmoin defined resources')
   }
 
   $moin_dir = $::moinmoin::params::moin_dir
