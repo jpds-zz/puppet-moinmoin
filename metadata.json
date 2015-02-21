@@ -1,0 +1,17 @@
+{
+  "name": "puppet-moinmoin",
+  "version": "0.0.1",
+  "author": "Jonathan Davies",
+  "summary": "Module to manage MoinMoin wikis",
+  "license": "MIT",
+  "source": "https://github.com/jpds/puppet-moinmoin",
+  "project_page": "https://github.com/jpds/puppet-moinmoin",
+  "issues_url": "https://github.com/jpds/puppet-moinmoin/issues",
+  "operatingsystem_support": [
+    { "operatingsystem": "Ubuntu", },
+    { "operatingsystem": "Debian", }
+  ],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib", "version_requirement": ">=3.2.0 <5.0.0" },
+  ]
+}
