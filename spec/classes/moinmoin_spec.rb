@@ -9,7 +9,8 @@ describe 'moinmoin', :type => 'class' do
       }
     end
 
-    it { should contain_package('python-moinmoin') }
+    it { should contain_package('python-moinmoin') \
+      .that_comes_before('File[/etc/moin]') }
     it { should contain_file('/etc/moin').with_path('/etc/moin') }
     it {
       should contain_file('/etc/moin/farmconfig.py').with(
