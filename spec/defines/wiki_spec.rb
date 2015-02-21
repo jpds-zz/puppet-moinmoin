@@ -67,4 +67,24 @@ describe 'moinmoin::wiki', :type => :define do
       end
     end
   end
+
+  context 'example settings on a Red Hat system' do
+    let(:facts) { { :osfamily => 'Red Hat' } }
+    let(:title) { 'wiki' }
+    let :params do
+      {
+        :sitename            => 'Wiki',
+        :interwikiname       => 'Wiki',
+        :data_dir            => '/srv/wiki/data/',
+        :data_underlay_dir   => '/srv/wiki/underlay/',
+        :httpd_external_auth => false,
+      }  
+    end
+
+    it do
+      expect {
+        should compile
+      }.to raise_error(Puppet::Error, /Red Hat is not supported\./)
+    end
+  end
 end
