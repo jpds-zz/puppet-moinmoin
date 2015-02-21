@@ -12,7 +12,13 @@ describe 'moinmoin', :type => 'class' do
     it { should contain_package('python-moinmoin') }
     it { should contain_file('/etc/moin').with_path('/etc/moin') }
     it {
-      should contain_file('/etc/moin/farmconfig.py').with_path('/etc/moin/farmconfig.py')
+      should contain_file('/etc/moin/farmconfig.py').with(
+        'ensure' => 'file',
+        'path'   => '/etc/moin/farmconfig.py',
+        'mode'   => '0644',
+        'owner'  => 'root',
+        'group'  => 'root',
+      )
     }
   end
 
