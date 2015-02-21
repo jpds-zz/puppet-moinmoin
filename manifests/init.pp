@@ -1,3 +1,4 @@
+# Default MoinMoin wiki class.
 class moinmoin(
   $package_name = $moinmoin::params::package,
   $wikis = {},

@@ -1,3 +1,4 @@
+# Configure a MoinMoin wiki instance.
 define moinmoin::wiki(
   $sitename,
   $interwikiname,

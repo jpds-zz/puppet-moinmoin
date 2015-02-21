@@ -1,3 +1,4 @@
+# Default MoinMoin parameters for different operating systems.
 class moinmoin::params {
   case $::osfamily {
     'Debian': {
