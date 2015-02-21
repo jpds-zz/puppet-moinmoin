@@ -20,6 +20,22 @@ describe 'moinmoin', :type => 'class' do
         'group'  => 'root',
       )
     }
+
+    context 'with wikis configured' do
+      let :params do
+        {
+          :wikis => {
+            'wiki'      => 'https://wiki.prod/',
+            'wiki-test' => 'https://wiki.test/'
+          }
+        }
+      end
+      it {
+        should contain_file('/etc/moin/farmconfig.py') \
+          .with_content(/^      \(\"wiki\", r\"https:\/\/wiki\.prod\/\"\),$/) \
+          .with_content(/^      \(\"wiki-test\", r\"https:\/\/wiki\.test\/\"\),$/)
+      }
+    end
   end
 
   context "On an unknown OS" do
