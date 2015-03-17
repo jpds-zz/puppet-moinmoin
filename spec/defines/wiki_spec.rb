@@ -36,6 +36,10 @@ describe 'moinmoin::wiki', :type => :define do
       should contain_file('/etc/moin/wiki.py') \
         .with_content(/^    data_underlay_dir = '\/srv\/wiki\/underlay\/'$/)
     end
+    it do
+      should contain_file('/etc/moin/wiki.py') \
+        .without_content(/^    surge_action_limits = None$/)
+    end
     it { should contain_file('/srv/wiki/data/') }
     it { should contain_file('/srv/wiki/underlay/') }
     
@@ -64,6 +68,19 @@ describe 'moinmoin::wiki', :type => :define do
         should contain_file('/etc/moin/wiki.py') \
           .with_content(/^    from MoinMoin.auth import GivenAuth$/)
           .with_content(/^    auth = \[GivenAuth\(autocreate=True\)\]$/)
+      end
+    end
+
+    context 'disable_surge_protection => true' do
+      let :params do
+        super().merge({
+          :disable_surge_protection => true
+        })
+      end
+
+      it do
+        should contain_file('/etc/moin/wiki.py') \
+          .with_content(/^    surge_action_limits = None$/)
       end
     end
   end

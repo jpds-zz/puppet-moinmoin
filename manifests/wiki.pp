@@ -4,7 +4,8 @@ define moinmoin::wiki(
   $interwikiname,
   $data_dir,
   $data_underlay_dir,
-  $httpd_external_auth = false,
+  $httpd_external_auth      = false,
+  $disable_surge_protection = false,
 ) {
   # The base class must be included first because it is used by parameter
   # defaults.
@@ -15,6 +16,7 @@ define moinmoin::wiki(
   $moin_dir = $::moinmoin::params::moin_dir
 
   validate_bool($httpd_external_auth)
+  validate_bool($disable_surge_protection)
 
   file { $data_dir:
     ensure => directory,

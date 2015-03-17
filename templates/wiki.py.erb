@@ -39,3 +39,7 @@ class Config(FarmConfig):
     auth = [GivenAuth(autocreate=True)]
 <% end %>
 
+<% if @disable_surge_protection -%>
+    # Surge protection disabled.
+    surge_action_limits = None
+<% end %>
